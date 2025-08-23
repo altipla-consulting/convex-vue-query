@@ -1,4 +1,4 @@
-# convex-vue
+# convex-vue-query
 
 A seamless integration between [convex-vue](https://github.com/chris-visser/convex-vue) and [Vue Query (TanStack Query)](https://tanstack.com/query/latest) for Vue applications. This package provides a powerful and type-safe way to manage server state and real time updates with Convex while leveraging Vue Query's powerful caching and control over the query lifecycle.
 
