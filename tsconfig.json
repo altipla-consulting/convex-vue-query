@@ -1,0 +1,14 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "baseUrl": "src",
+    "paths": {
+      "~/*": ["./*"],
+      "~convex/*": ["../convex/*"]
+    },
+    "types": ["vite/client"]
+  },
+  "include": ["src/**/*", "*.ts", "convex/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
