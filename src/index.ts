@@ -66,7 +66,6 @@ export function convexQuery<ConvexQueryReference extends FunctionReference<'quer
     queryKey: convexQueryKey(funcRef, queryArgs) as any,
     queryFn: () => client.query(funcRef, resolveComputedRefs(toValue(queryArgs))),
     staleTime: Infinity,
-    enabled: true,
   })
 }
 
