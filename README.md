@@ -13,10 +13,10 @@ A seamless integration between [convex-vue](https://github.com/chris-visser/conv
 
 ```bash
 # npm
-npm install convex-vue
+npm install convex-vue-query
 
 # pnpm
-pnpm add convex-vue
+pnpm add convex-vue-query
 ```
 
 ## Quick Start
@@ -29,7 +29,7 @@ Setup the plugin after configuring [convex-vue](https://github.com/chris-visser/
 import { createApp } from 'vue'
 import { convexVue } from 'convex-vue'
 import { VueQueryPlugin } from '@tanstack/vue-query'
-import { ConvexVueQuery } from 'convex-vue'
+import { ConvexVueQuery } from 'convex-vue-query'
 
 const app = createApp(App)
 
@@ -61,7 +61,7 @@ We have a helper `convexQuery` to generate a query configuration object that can
 </template>
 
 <script lang="ts" setup>
-import { convexQuery } from 'convex-vue'
+import { convexQuery } from 'convex-vue-query'
 import { api } from '~convex/_generated/api'
 
 const { data: messages } = useQuery(convexQuery(api.messages.list, {}))
@@ -82,7 +82,7 @@ Use [`useConvexMutation`](https://github.com/chris-visser/convex-vue?tab=readme-
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { useConvexMutation } from 'convex-vue'
+import { useConvexMutation } from 'convex-vue-query'
 import { api } from '~convex/_generated/api'
 
 const text = ref('')
@@ -121,7 +121,7 @@ You can override any option like `enabled` or `initialData` as needed. Some opti
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
-import { convexQuery, convexQueryKey, useConvexMutation } from 'convex-vue'
+import { convexQuery, convexQueryKey, useConvexMutation } from 'convex-vue-query'
 import { api } from '~convex/_generated/api'
 import type { Doc, Id } from '~convex/_generated/dataModel'
 
