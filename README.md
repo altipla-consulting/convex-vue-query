@@ -99,7 +99,7 @@ async function send() {
 
 Expand the `convexQuery` options to further configure the query as needed. For example you can use the `placeholderData` option to provide placeholder data for the query reading a previous query from the list if present.
 
-You can override any option like `enabled`, `refetchInterval`, etc.
+You can override any option like `enabled` or `initialData` as needed. Some options [do not make sense](https://github.com/altipla-consulting/convex-vue-query?tab=readme-ov-file#differences-from-using-tanstack-query-with-fetch) to use with Convex like `refetchInterval` or `staleTime` so please do not configure them.
 
 ```vue
 <template>
@@ -188,6 +188,10 @@ New query results are pushed from the server, so a `staleTime` of `Infinity` sho
 A difference from the official React+Tanstack Query library is that the subscription time is tied to the query lifecycle. When a query is unmounted, the subscription is cancelled inmediately instead of waiting for the `gcTime` to kick in. When the query is mounted again, the subscription is re-established like a normal `fetch`-based query would do.
 
 This is nicer as it avoids uncontrolled background usage when the query is unmounted racking up unnecessary costs.
+
+### Refetching
+
+Do not configure `refetchInterval` or any kind of refetching as this will be handled by Convex. Any data updates will be pushed to the client automatically.
 
 ## Contributing
 
