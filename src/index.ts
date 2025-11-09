@@ -99,11 +99,9 @@ export const ConvexVueQuery = {
               func,
               args,
               (result: any) => {
-                console.log('result', result)
                 queryClient.setQueryData(event.query.queryKey, () => result)
               },
               () => {
-                console.log('error')
                 void queryClient.resetQueries({ queryKey: event.query.queryKey })
               },
             )
