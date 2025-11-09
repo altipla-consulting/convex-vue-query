@@ -4,37 +4,9 @@ import { useConvexClient } from 'convex-vue'
 import { convexToJson } from 'convex/values'
 import { toValue, type App, type MaybeRefOrGetter, type ComputedRef, type Ref } from 'vue'
 import type { ConvexClient } from 'convex/browser'
+import { resolveComputedRefs } from './resolve'
 
 export { useConvexMutation } from 'convex-vue'
-
-// Utility function to recursively resolve computed refs in an object
-function resolveComputedRefs<T>(obj: T): T {
-  if (obj === null || obj === undefined) {
-    return obj
-  }
-
-  // Handle refs and computed refs
-  if (typeof obj === 'object' && 'value' in obj && typeof obj.value !== 'undefined') {
-    return toValue(obj) as T
-  }
-
-  // Handle arrays
-  if (Array.isArray(obj)) {
-    return obj.map(resolveComputedRefs) as T
-  }
-
-  // Handle plain objects
-  if (typeof obj === 'object' && !Array.isArray(obj)) {
-    const resolved: any = {}
-    for (const [key, value] of Object.entries(obj)) {
-      resolved[key] = resolveComputedRefs(value)
-    }
-    return resolved as T
-  }
-
-  // Return primitive values as-is
-  return obj
-}
 
 /**
  * Generates the query key for a convex query.
@@ -127,9 +99,11 @@ export const ConvexVueQuery = {
               func,
               args,
               (result: any) => {
+                console.log('result', result)
                 queryClient.setQueryData(event.query.queryKey, () => result)
               },
               () => {
+                console.log('error')
                 void queryClient.resetQueries({ queryKey: event.query.queryKey })
               },
             )

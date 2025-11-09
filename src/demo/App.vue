@@ -26,6 +26,7 @@ import { api } from '~convex/_generated/api'
 import { computed, ref } from 'vue'
 import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
 import type { Doc, Id } from '~convex/_generated/dataModel'
+import { useConvexClient } from 'convex-vue'
 
 const { data: messages } = useQuery(convexQuery(api.messages.list, {}))
 
@@ -47,6 +48,13 @@ const { data: selectedMessage } = useQuery({
     const messages = client.getQueryData<Message[]>(convexQueryKey(api.messages.list, {}))
     return messages?.find((m) => m._id === selected.value)
   },
+})
+
+const client2 = useConvexClient()
+
+console.log('before subscribe')
+client2.subscribeToConnectionState((state) => {
+  console.log(state)
 })
 </script>
 

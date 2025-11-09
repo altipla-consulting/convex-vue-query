@@ -26,7 +26,8 @@
     "lint": "vue-tsc --noEmit && eslint src",
     "build": "obuild",
     "fix": "eslint --fix src",
-    "test": "echo 0",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "prepublishOnly": "pnpm run build"
   },
   "devDependencies": {
@@ -41,13 +42,14 @@
     "eslint": "^9.34.0",
     "obuild": "^0.2.1",
     "vite": "^7.1.3",
+    "vitest": "^4.0.8",
     "vue": "^3.5.19",
     "vue-tsc": "^3.0.6"
   },
   "pnpm": {
     "neverBuiltDependencies": []
   },
-  "packageManager": "pnpm@9.1.0+sha1.217063ce3fcbf44f3051666f38b810f1ddefee4a",
+  "packageManager": "pnpm@10.20.0",
   "peerDependencies": {
     "@tanstack/vue-query": "^5.85.5",
     "convex": "^1.26.1",
