@@ -1,7 +1,7 @@
 {
   "name": "convex-vue-query",
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Integrate convex-vue + Tanstack Query.",
   "author": "Altípla Consulting",
   "license": "MIT",
